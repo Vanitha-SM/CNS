@@ -28,7 +28,57 @@ becomes C. To change a message back, each letter is replaced by the one three be
 
 
 PROGRAM :-
+```
+def main():
+    plain = input("\nEnter the plain text: ")
+    key = int(input("Enter the key value: "))
+
+    print("\n\tPLAIN TEXT:", plain)
+    print("\n\tENCRYPTED TEXT:", end='')
+
+    cipher = ""
+    for ch in plain:
+        if ch.isalpha():
+            shifted = ord(ch) + key
+            if ch.isupper():
+                if shifted > ord('Z'):
+                    shifted -= 26
+            elif ch.islower():
+                if shifted > ord('z'):
+                    shifted -= 26
+            cipher += chr(shifted)
+            print(chr(shifted), end='')
+        else:
+            cipher += ch
+            print(ch, end='')
+
+    print("\n\n\tAFTER DECRYPTION: ", end='')
+
+    decrypted = ""
+    for ch in cipher:
+        if ch.isalpha():
+            shifted = ord(ch) - key
+            if ch.isupper():
+                if shifted < ord('A'):
+                    shifted += 26
+            elif ch.islower():
+                if shifted < ord('a'):
+                    shifted += 26
+            decrypted += chr(shifted)
+            print(chr(shifted), end='')
+        else:
+            decrypted += ch
+            print(ch, end='')
+
+if __name__ == "__main__":
+    main()
 
 
+```
 
-OUTPUT :-
+
+## OUTPUT :-
+![image](https://github.com/user-attachments/assets/750a07aa-e88e-426a-9287-5751f6361925)
+
+## RESULT :-
+The program is executed successfully
